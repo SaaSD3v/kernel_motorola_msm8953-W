@@ -572,25 +572,16 @@ static int ion_sgl_sync_range(struct device *dev, struct scatterlist *sgl,
 	int i;
 	struct scatterlist *sg;
 	unsigned int len = 0;
-	dma_addr_t sg_dma_addr;
-
-	for_each_sg(sgl, sg, nents, i) {
-		if (sg_dma_len(sg) == 0)
-			break;
-
-		if (i > 0) {
-			pr_warn_ratelimited("Partial cmo only supported with 1 segment\n"
-				"is dma_set_max_seg_size being set on dev:%s\n",
-				dev_name(dev));
-			return -EINVAL;
-		}
-	}
+	dma_addr_t sg_dma_addr = 0;
 
 	for_each_sg(sgl, sg, nents, i) {
 		unsigned int sg_offset, sg_left, size = 0;
 
-		if (i == 0)
+		if (i == 0 || sg_dma_len(sg) > 0)
 			sg_dma_addr = sg_dma_address(sg);
+
+		if (sg_dma_len(sg) == 0 && sg->length == 0)
+			break;
 
 		len += sg->length;
 		if (len <= offset) {
@@ -600,8 +591,8 @@ static int ion_sgl_sync_range(struct device *dev, struct scatterlist *sgl,
 
 		sg_left = len - offset;
 		sg_offset = sg->length - sg_left;
+		size = min_t(unsigned long, length, sg_left);
 
-		size = (length < sg_left) ? length : sg_left;
 		if (for_cpu)
 			dma_sync_single_range_for_cpu(dev, sg_dma_addr,
 						      sg_offset, size, dir);
