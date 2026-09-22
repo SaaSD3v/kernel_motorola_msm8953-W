@@ -1,7 +1,0 @@
-&firmware {
-	android {
-		fstab {
-			/delete-node/ vendor;
-		};
-	};
-};

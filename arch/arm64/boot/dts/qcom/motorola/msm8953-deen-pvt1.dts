@@ -13,7 +13,6 @@
 /dts-v1/;
 
 
-#include "common/common.dtsi"
 #include "deen/deen.dtsi"
 
 

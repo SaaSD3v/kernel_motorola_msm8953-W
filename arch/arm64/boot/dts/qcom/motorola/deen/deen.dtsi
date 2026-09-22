@@ -10,8 +10,9 @@
  * GNU General Public License for more details.
  */
 
+#include "../common/common.dtsi"
+
 /* deen */
-#include "android.dtsi"
 #include "audio.dtsi"
 #include "battery.dtsi"
 #include "camera.dtsi"
