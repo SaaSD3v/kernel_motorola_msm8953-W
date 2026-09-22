@@ -806,6 +806,8 @@ endif  #CONFIG_MMI_DEVICE_DTBS
 
 dtb-$(CONFIG_ARCH_SDM845_VM) += sdm845-vm.dtb
 
+dts-dirs += motorola
+
 always		:= $(dtb-y)
 subdir-y	:= $(dts-dirs)
 clean-files	:= *.dtb
