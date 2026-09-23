@@ -1383,3 +1383,20 @@ config TOUCHSCREEN_HIMAX_MMI_CHIPSET
 	  Enable the Himax MMI touchscreen family used by Moto G7 Play.
 
 source "drivers/input/touchscreen/himax_mmi/Kconfig"
+
+config TOUCHSCREEN_NOVATEK_CHIPSET
+	bool "Novatek touchpanel Novatek series"
+	depends on I2C
+	help
+	  Enable the Novatek touchscreen family used by Channel hardware revisions.
+
+source "drivers/input/touchscreen/nova_mmi/Kconfig"
+source "drivers/input/touchscreen/nova_36525_mmi/Kconfig"
+
+config TOUCHSCREEN_ILITEK_CHIPSET
+	bool "Ilitek touchpanel Ilitek series"
+	depends on I2C
+	help
+	  Enable the Ilitek touchscreen family used by Channel hardware revisions.
+
+source "drivers/input/touchscreen/ilitek_mmi/Kconfig"
