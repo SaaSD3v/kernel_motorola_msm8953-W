@@ -461,3 +461,8 @@ CONFIG_SYSTEM_TRUSTED_KEYS=""
 # - official TWRP ramdisk/recovery_dtbo are preserved
 # - no DroidSpaces in this branch
 # - no camera/audio/WLAN additions beyond the 4.19 recovery baseline
+CONFIG_POWER_SUPPLY=y
+CONFIG_HWSPINLOCK=y
+CONFIG_RPMSG=y
+CONFIG_FTRACE=y
+CONFIG_ENABLE_DEFAULT_TRACERS=y
