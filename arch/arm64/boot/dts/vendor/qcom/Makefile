@@ -1,3 +1,8 @@
+# Motorola Moto G7 Play (channel) recovery base DTB.
+# Keep the official TWRP recovery_dtbo untouched during the first 4.19 validation;
+# only the base DTB is appended to the rebuilt kernel image here.
+dtb-$(CONFIG_ARCH_SDM632) += sdm632-channel-base.dtb
+
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
         dtbo-$(CONFIG_ARCH_KONA) += \
                 kona-cdp-overlay.dtbo \
