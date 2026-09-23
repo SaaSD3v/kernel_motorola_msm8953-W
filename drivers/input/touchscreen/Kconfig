@@ -1375,3 +1375,5 @@ config TOUCHSCREEN_DOUBLETAP2WAKE
 	default n
 
 endif
+
+source "drivers/input/touchscreen/himax_mmi/Kconfig"

@@ -998,3 +998,17 @@ config QPNP_HAPTIC
 	  on the touch screen.  It uses the Android timed-output framework.
 
 source "drivers/soc/qcom/wcnss/Kconfig"
+
+config MMI_DEVICE_DTBS
+	bool "Motorola Mobility Device DTBs"
+	depends on ARCH_QCOM
+	default n
+	help
+	  Build Motorola device-specific DTBs/DTBOs.
+
+config CHANNEL_DTB
+	bool "Moto G7 Play (channel) DTBs"
+	depends on ARCH_QCOM && MMI_DEVICE_DTBS
+	default n
+	help
+	  Build Moto G7 Play channel base DTB and overlays.

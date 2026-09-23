@@ -1035,12 +1035,9 @@ static int parse_cgroupfs_options(char *data, struct cgroup_sb_opts *opts)
 		return -EINVAL;
 
 	/*
-	 * Option noprefix was introduced just for backward compatibility
-	 * with the old cpuset, so we allow noprefix only if mounting just
-	 * the cpuset subsystem.
+	 * DroidSpaces uses legacy cgroup-v1 hierarchies with noprefix beyond
+	 * cpuset. Keep noprefix available to v1 controllers in recovery.
 	 */
-	if ((opts->flags & CGRP_ROOT_NOPREFIX) && (opts->subsys_mask & mask))
-		return -EINVAL;
 
 	/* Can't specify "none" and some subsystems */
 	if (opts->subsys_mask && opts->none)
