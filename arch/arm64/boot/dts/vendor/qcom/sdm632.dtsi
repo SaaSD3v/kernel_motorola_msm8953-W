@@ -967,18 +967,11 @@
 
 	/delete-node/ devfreq-cpufreq;
 	devfreq-cpufreq {
-		mincpubw-cpufreq {
-			target-dev = <&mincpubw>;
-			cpu-to-dev-map-0 =
-				<  614400 1611>,
-				< 1363200 3221>,
-				< 1804800 5859>;
-			cpu-to-dev-map-4 =
-				< 1094400 1611>,
-				< 1401600 3221>,
-				< 1804800 5859>,
-				< 2016000 7104>;
-		};
+		/*
+		 * Linux 4.19 msm8953 no longer exposes the legacy mincpubw
+		 * devbw node. Keep the CCI mapping below, but do not retain a
+		 * phandle to the removed 4.9-only node.
+		 */
 
 		cci-cpufreq {
 			target-dev = <&cci_cache>;
@@ -1014,7 +1007,11 @@
 	/delete-node/ case-therm-step;
 };
 
-#include "sdm632-coresight.dtsi"
+/*
+ * The 4.19 msm8953 base no longer carries the legacy Qualcomm CoreSight
+ * topology that sdm632-coresight.dtsi extends. Recovery does not need ETM
+ * tracing, and keeping the 4.9 extension creates dangling funnel phandles.
+ */
 
 /* GPU Overrides*/
 &msm_gpu {
