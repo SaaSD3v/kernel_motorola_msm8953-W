@@ -1352,6 +1352,16 @@ config TOUCHSCREEN_SYNAPTICS_TCM
 
 source "drivers/input/touchscreen/synaptics_tcm/Kconfig"
 
+config TOUCHSCREEN_HIMAX_MMI_CHIPSET
+	bool "Himax touchpanel MMI CHIPSET"
+	depends on I2C
+	help
+	  Say Y here if you have a Himax MMI CHIPSET touchscreen.
+	  HIMAX controllers are multi touch controllers which can
+	  report 10 touches at a time.
+
+source "drivers/input/touchscreen/himax_mmi/Kconfig"
+
 config TOUCHSCREEN_FT5X06
 	tristate "FocalTech FT5X06 touchscreen"
 	depends on I2C
