@@ -1376,4 +1376,10 @@ config TOUCHSCREEN_DOUBLETAP2WAKE
 
 endif
 
+config TOUCHSCREEN_HIMAX_MMI_CHIPSET
+	bool "Himax touchpanel MMI CHIPSET"
+	depends on I2C
+	help
+	  Enable the Himax MMI touchscreen family used by Moto G7 Play.
+
 source "drivers/input/touchscreen/himax_mmi/Kconfig"
