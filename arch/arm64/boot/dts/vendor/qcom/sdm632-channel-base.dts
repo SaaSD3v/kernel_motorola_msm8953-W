@@ -28,7 +28,7 @@
 /* camera flash and gpio 50 */
 
 &reserved_memory {
-	ramoops@ef000000 {
+	ramoops_mem {
 		compatible = "ramoops";
 		reg = <0x0 0xef000000 0x0 0xbf800>;
 		console-size = <0x40000>;
