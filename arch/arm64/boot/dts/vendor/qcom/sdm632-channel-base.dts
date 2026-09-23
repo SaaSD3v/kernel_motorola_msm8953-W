@@ -23,6 +23,13 @@
  */
 &usb3 {
 	extcon = <&pmi632_charger>;
+	/* The modern DWC3 glue tracks BC1.2 on the QUSB DP/DM regulator. */
+	dpdm-supply = <&qusb_phy>;
+};
+
+&pmi632_charger {
+	/* Restore the known-good Channel SMB5 -> QUSB PHY BC1.2 path. */
+	dpdm-supply = <&qusb_phy>;
 };
 
 &mdss_dsi0 {
