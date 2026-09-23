@@ -14,6 +14,17 @@
 
 #include "sdm632-moto-base.dtsi"
 
+/*
+ * Channel uses PMI632/SMB5 as the Micro-USB extcon provider.  The inherited
+ * SDM450 DT keeps the legacy 4.9 five-slot extcon layout (Type-C, EUD,
+ * Micro-USB).  The 4.19 dwc3-msm glue treats each entry as a generic provider,
+ * so expose the single provider that can report both EXTCON_USB and
+ * EXTCON_USB_HOST instead of registering duplicate notifiers.
+ */
+&usb3 {
+	extcon = <&pmi632_charger>;
+};
+
 &mdss_dsi0 {
 	/delete-property/ vdd-supply;
 };
